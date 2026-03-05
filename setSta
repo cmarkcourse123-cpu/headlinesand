@@ -20,9 +20,10 @@ spinner: document.getElementById("spinner"),
 
 const DEFAULT_ENDPOINT_HINT = "https://headline-lab-worker.prichardsonny.workers.dev";
 
-function setStatus(msg, kind="muted") {
-  els.status.className = `status ${kind}`;
-  els.status.textContent = msg;
+function setStatus(msg, kind = "muted", isLoading = false) {
+  els.status.className = `status ${kind}` + (isLoading ? " loading" : "");
+  if (els.statusText) els.statusText.textContent = msg;
+  else els.status.textContent = msg; // fallback if you didn't add statusText
 }
 
 function render(rows) {
