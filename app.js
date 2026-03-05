@@ -74,7 +74,7 @@ els.demo.addEventListener("click", () => {
   els.tone.value = "Bold";
   els.style.value = "Curiosity";
   els.framework.value = "4U";
-  if (!els.endpoint.value) els.endpoint.value = DEFAULT_ENDPOINT_HINT;
+  els.endpoint.value) els.endpoint.value = DEFAULT_ENDPOINT_HINT;
   setStatus("Demo loaded. Paste your Worker endpoint, then click Generate + Score.", "muted");
 });
 
