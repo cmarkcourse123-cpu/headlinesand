@@ -14,6 +14,8 @@ const els = {
   status: $("status"),
   tbody: $("tbody"),
   copy: $("copy"),
+statusText: document.getElementById("statusText"),
+spinner: document.getElementById("spinner"),
 };
 
 const DEFAULT_ENDPOINT_HINT = "https://headline-lab-worker.prichardsonny.workers.dev";
