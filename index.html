@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Headline Laboratory</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="wrap">
+    <h1>Headline Laboratory</h1>
+    <p class="sub">Generate + score marketing headlines (classroom sandbox).</p>
+  </header>
+
+  <main class="wrap grid">
+    <section class="card">
+      <h2>Inputs</h2>
+
+      <label>Product / Offer
+        <input id="product" placeholder="e.g., Electric bike subscription" />
+      </label>
+
+      <label>Audience
+        <input id="audience" placeholder="e.g., Urban commuters (25–45)" />
+      </label>
+
+      <div class="row">
+        <label>Tone
+          <select id="tone">
+            <option>Bold</option>
+            <option>Friendly</option>
+            <option>Professional</option>
+            <option>Luxury</option>
+            <option>Playful</option>
+            <option>Urgent</option>
+          </select>
+        </label>
+
+        <label>Style
+          <select id="style">
+            <option>Curiosity</option>
+            <option>Benefit</option>
+            <option>List</option>
+            <option>Emotional</option>
+            <option>Urgency/FOMO</option>
+            <option>How-to</option>
+            <option>Contrarian</option>
+          </select>
+        </label>
+      </div>
+
+      <label>Framework (optional)
+        <select id="framework">
+          <option value="None">None</option>
+          <option value="AIDA">AIDA (Attention–Interest–Desire–Action)</option>
+          <option value="PAS">PAS (Problem–Agitate–Solution)</option>
+          <option value="4U">4U (Useful–Urgent–Unique–Ultra-specific)</option>
+        </select>
+      </label>
+
+      <details>
+        <summary>Advanced</summary>
+
+        <div class="row">
+          <label>Temperature
+            <input id="temp" type="number" min="0" max="1.2" step="0.1" value="0.8" />
+          </label>
+          <label>Headlines
+            <input id="n" type="number" min="5" max="20" step="1" value="10" />
+          </label>
+        </div>
+
+        <label>Worker Endpoint (paste your Cloudflare Worker URL)
+          <input id="endpoint" placeholder="https://your-worker.your-subdomain.workers.dev" />
+        </label>
+      </details>
+
+      <div class="actions">
+        <button id="go">Generate + Score</button>
+        <button id="demo" class="ghost">Load demo</button>
+      </div>
+
+      <p class="hint">
+        Tip: Have students iterate: change one input, regenerate, then justify why scores changed.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Results</h2>
+      <div id="status" class="status muted">Ready.</div>
+
+      <div class="tableWrap">
+        <table id="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Headline</th>
+              <th>4U</th>
+              <th>Clarity</th>
+              <th>CTR</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="export">
+        <button id="copy" class="ghost">Copy table as TSV</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <span>Built for classroom use • Keep the API key on the server</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
