@@ -16,7 +16,7 @@ const els = {
   copy: $("copy"),
 };
 
-const DEFAULT_ENDPOINT_HINT = "https://YOUR-WORKER.SUBDOMAIN.workers.dev";
+const DEFAULT_ENDPOINT_HINT = "https://headline-lab-worker.prichardsonny.workers.dev";
 
 function setStatus(msg, kind="muted") {
   els.status.className = `status ${kind}`;
