@@ -14,8 +14,8 @@ const els = {
   status: $("status"),
   tbody: $("tbody"),
   copy: $("copy"),
-statusText: document.getElementById("statusText"),
-spinner: document.getElementById("spinner"),
+  statusText: document.getElementById("statusText"),
+  spinner: document.getElementById("spinner"),
 };
 
 const DEFAULT_ENDPOINT_HINT = "https://headline-lab-worker.prichardsonny.workers.dev";
@@ -23,7 +23,7 @@ const DEFAULT_ENDPOINT_HINT = "https://headline-lab-worker.prichardsonny.workers
 function setStatus(msg, kind = "muted", isLoading = false) {
   els.status.className = `status ${kind}` + (isLoading ? " loading" : "");
   if (els.statusText) els.statusText.textContent = msg;
-  else els.status.textContent = msg; // fallback if you didn't add statusText
+  else els.status.textContent = msg;
 }
 
 function render(rows) {
@@ -59,7 +59,7 @@ function escapeHtml(s) {
 
 function toTSV() {
   const rows = [...els.tbody.querySelectorAll("tr")].map(tr =>
-    [...tr.querySelectorAll("td")].map(td => td.textContent.replaceAll("\t"," ").trim()).join("\t")
+    [...tr.querySelectorAll("td")].map(td => td.textContent.replaceAll("\t", " ").trim()).join("\t")
   );
   const header = ["#", "Headline", "4U", "Clarity", "CTR", "Notes"].join("\t");
   return [header, ...rows].join("\n");
@@ -77,12 +77,12 @@ els.demo.addEventListener("click", () => {
   els.tone.value = "Bold";
   els.style.value = "Curiosity";
   els.framework.value = "4U";
-  els.endpoint.value) els.endpoint.value = DEFAULT_ENDPOINT_HINT;
-  setStatus("Demo loaded. Paste your Worker endpoint, then click Generate + Score.", "muted");
+  els.endpoint.value = DEFAULT_ENDPOINT_HINT;
+  setStatus("Demo loaded. Click Generate + Score.", "muted");
 });
 
 els.go.addEventListener("click", async () => {
-  const endpoint = (els.endpoint.value || "").trim().replace(/\/+$/,"");
+  const endpoint = (els.endpoint.value || "").trim().replace(/\/+$/, "");
   if (!endpoint || endpoint.includes("YOUR-WORKER")) {
     setStatus("Add your Cloudflare Worker endpoint in Advanced → Worker Endpoint.", "muted");
     return;
