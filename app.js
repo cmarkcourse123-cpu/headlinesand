@@ -81,6 +81,7 @@ els.demo.addEventListener("click", () => {
   setStatus("Demo loaded. Click Generate + Score.", "muted");
 });
 
+
 els.go.addEventListener("click", async () => {
   const endpoint = (els.endpoint.value || "").trim().replace(/\/+$/, "");
   if (!endpoint || endpoint.includes("YOUR-WORKER")) {
