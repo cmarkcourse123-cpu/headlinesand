@@ -120,9 +120,9 @@ els.go.addEventListener("click", async () => {
 
     const data = await res.json();
     render(data.items || []);
-    setStatus(`Done. Model: ${data.model || "?"} • Tokens: ${data.usage?.total_tokens ?? "?"}`, "muted");
+    setStatus(`Done. Model: ${data.model || "?"} • Tokens: ${data.usage?.total_tokens ?? "?"}`, "muted", false);
   } catch (err) {
-    setStatus(`Error: ${err.message}`, "muted");
+    setStatus(`Error: ${err.message}`, "muted", false);
   } finally {
     els.go.disabled = false;
   }
