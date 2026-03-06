@@ -110,7 +110,10 @@ els.go.addEventListener("click", async () => {
   try {
     const res = await fetch(`${endpoint}/headline-lab`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+      "Content-Type": "application/json",
+    "x-class-key": "marketing384"
+     },
       body: JSON.stringify(payload),
     });
 
