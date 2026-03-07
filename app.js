@@ -62,7 +62,7 @@ function toTSV() {
   const rows = [...els.tbody.querySelectorAll("tr")].map(tr =>
     [...tr.querySelectorAll("td")].map(td => td.textContent.replaceAll("\t", " ").trim()).join("\t")
   );
-  const header = ["#", "Headline", "4U", "Clarity", "CTR", "Notes"].join("\t");
+const header = ["#", "Framework", "Headline", "4U", "Clarity", "CTR", "Notes"].join("\t");
   return [header, ...rows].join("\n");
 }
 
