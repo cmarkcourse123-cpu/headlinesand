@@ -16,6 +16,9 @@ const els = {
   copy: $("copy"),
   statusText: document.getElementById("statusText"),
   spinner: document.getElementById("spinner"),
+    winnerBox: $("winnerBox"),
+  winnerHeadline: $("winnerHeadline"),
+  winnerReason: $("winnerReason"),
 };
 
 const DEFAULT_ENDPOINT_HINT = "https://headline-lab-worker.prichardsonny.workers.dev";
@@ -39,6 +42,16 @@ function render(rows) {
   });
 
   ranked.sort((a, b) => b.rank_score - a.rank_score);
+
+  if (ranked.length > 0) {
+    const winner = ranked[0];
+    els.winnerHeadline.textContent = winner.headline || "";
+    els.winnerReason.textContent =
+      winner.notes || "This headline achieved the strongest combined score across 4U, clarity, and click potential.";
+    els.winnerBox.classList.remove("hidden");
+  } else {
+    els.winnerBox.classList.add("hidden");
+  }
 
   ranked.forEach((r, i) => {
     const tr = document.createElement("tr");
