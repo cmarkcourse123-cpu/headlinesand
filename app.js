@@ -28,17 +28,34 @@ function setStatus(msg, kind = "muted", isLoading = false) {
 
 function render(rows) {
   els.tbody.innerHTML = "";
-  rows.forEach((r, i) => {
+
+  // compute rank score
+  const ranked = rows.map(r => {
+    const four = Number(r.scores?.four_u) || 0;
+    const clarity = Number(r.scores?.clarity) || 0;
+    const ctr = Number(r.scores?.ctr_potential) || 0;
+    const rank_score = four + clarity + ctr;
+
+    return { ...r, rank_score };
+  });
+
+  // sort best to worst
+  ranked.sort((a, b) => b.rank_score - a.rank_score);
+
+  ranked.forEach((r, i) => {
     const tr = document.createElement("tr");
-tr.innerHTML = `
-  <td>${i + 1}</td>
-  <td>${escapeHtml(r.framework || "")}</td>
-  <td>${escapeHtml(r.headline || "")}</td>
-  <td>${num(r.scores?.four_u)}</td>
-  <td>${num(r.scores?.clarity)}</td>
-  <td>${num(r.scores?.ctr_potential)}</td>
-  <td><small>${escapeHtml((r.notes || "").trim())}</small></td>
-`;
+
+    tr.innerHTML = `
+      <td>${i + 1}</td>
+      <td>${escapeHtml(r.framework || "")}</td>
+      <td>${escapeHtml(r.headline || "")}</td>
+      <td>${num(r.scores?.four_u)}</td>
+      <td>${num(r.scores?.clarity)}</td>
+      <td>${num(r.scores?.ctr_potential)}</td>
+      <td>${num(r.rank_score)}</td>
+      <td><small>${escapeHtml((r.notes || "").trim())}</small></td>
+    `;
+
     els.tbody.appendChild(tr);
   });
 }
