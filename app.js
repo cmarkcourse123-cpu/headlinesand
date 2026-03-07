@@ -30,14 +30,15 @@ function render(rows) {
   els.tbody.innerHTML = "";
   rows.forEach((r, i) => {
     const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${i + 1}</td>
-      <td>${escapeHtml(r.headline || "")}</td>
-      <td>${num(r.scores?.four_u)}</td>
-      <td>${num(r.scores?.clarity)}</td>
-      <td>${num(r.scores?.ctr_potential)}</td>
-      <td><small>${escapeHtml((r.notes || "").trim())}</small></td>
-    `;
+tr.innerHTML = `
+  <td>${i + 1}</td>
+  <td>${escapeHtml(r.framework || "")}</td>
+  <td>${escapeHtml(r.headline || "")}</td>
+  <td>${num(r.scores?.four_u)}</td>
+  <td>${num(r.scores?.clarity)}</td>
+  <td>${num(r.scores?.ctr_potential)}</td>
+  <td><small>${escapeHtml((r.notes || "").trim())}</small></td>
+`;
     els.tbody.appendChild(tr);
   });
 }
