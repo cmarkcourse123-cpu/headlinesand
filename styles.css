@@ -57,3 +57,12 @@ td small { color:var(--muted); }
 .loading .spinner {
   display: inline-block;
 }
+
+.winner-row {
+  background: rgba(122, 162, 255, 0.12);
+  font-weight: 600;
+}
+
+.winner-row td {
+  border-bottom: 1px solid var(--accent);
+}
