@@ -29,7 +29,6 @@ function setStatus(msg, kind = "muted", isLoading = false) {
 function render(rows) {
   els.tbody.innerHTML = "";
 
-  // compute rank score
   const ranked = rows.map(r => {
     const four = Number(r.scores?.four_u) || 0;
     const clarity = Number(r.scores?.clarity) || 0;
@@ -39,14 +38,17 @@ function render(rows) {
     return { ...r, rank_score };
   });
 
-  // sort best to worst
   ranked.sort((a, b) => b.rank_score - a.rank_score);
 
   ranked.forEach((r, i) => {
     const tr = document.createElement("tr");
 
+    if (i === 0) {
+      tr.classList.add("winner-row");
+    }
+
     tr.innerHTML = `
-      <td>${i + 1}</td>
+      <td>${i + 1}${i === 0 ? " 🏆" : ""}</td>
       <td>${escapeHtml(r.framework || "")}</td>
       <td>${escapeHtml(r.headline || "")}</td>
       <td>${num(r.scores?.four_u)}</td>
