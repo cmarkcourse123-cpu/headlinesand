@@ -66,3 +66,21 @@ td small { color:var(--muted); }
 .winner-row td {
   border-bottom: 1px solid var(--accent);
 }
+
+
+
+
+
+
+.winner-row {
+  background: rgba(122, 162, 255, 0.18);
+  font-weight: 700;
+}
+
+.winner-row td {
+  border-bottom: 1px solid var(--accent);
+}
+
+.winner-row td:first-child {
+  color: var(--accent);
+}
