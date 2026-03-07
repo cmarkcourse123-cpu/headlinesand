@@ -84,3 +84,36 @@ td small { color:var(--muted); }
 .winner-row td:first-child {
   color: var(--accent);
 }
+
+.winner-box {
+  margin: 12px 0;
+  padding: 14px 16px;
+  border: 1px solid var(--accent);
+  border-radius: 14px;
+  background: rgba(122, 162, 255, 0.10);
+}
+
+.winner-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.winner-headline {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.winner-reason {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.hidden {
+  display: none;
+}
